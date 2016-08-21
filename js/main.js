@@ -10,8 +10,8 @@ var previous_height_count = 0;
 var single_word_height = 0;
 var tota_word_count = 0;
 var unique_random_numbers = [];
-//var server_path = "/romantic-interlude/"
-var server_path = ""
+var server_path = "/romantic-interlude/"
+//var server_path = ""
 
 // Add random body parts
 function addBodyParts() {
