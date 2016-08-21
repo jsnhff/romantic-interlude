@@ -18,7 +18,7 @@ function addBodyParts() {
     var limit = 10,
         amount = 3,
         lower_bound = 1,
-        upper_bound = 10,
+        upper_bound = 5,
         unique_random_numbers = [];
 
     if (amount > limit) limit = amount; // Infinite loop if you want more unique
