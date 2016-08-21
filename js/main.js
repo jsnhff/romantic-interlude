@@ -15,7 +15,7 @@ var unique_random_numbers = [];
 function addBodyParts() {
     // Example, including customisable intervals [lower_bound, upper_bound)
     // Thanks: http://goo.gl/MXgFbn
-    var limit = 10,
+    var limit = 5,
         amount = 3,
         lower_bound = 1,
         upper_bound = 5,
