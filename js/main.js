@@ -7,6 +7,7 @@ var top_margin = 0; // A global top margin variable to help track incremental to
 var total_height = 0;
 var previous_height = 0;
 var previous_height_count = 0;
+var single_word_height = 0;
 
 // Get book from text file
 $.ajax({
@@ -23,7 +24,7 @@ $.ajax({
 // Add words from book to HTML, keeping them hidden
 function write(book){
     for (i = 0; i < book.length; i++) {
-        var word_wrapped = " <span class='word' style='display:none;'>"+book[i]+"</span>"; 
+        var word_wrapped = " <span class='word inline-block' style='display:none;'>"+book[i]+"</span>"; 
         home.append(word_wrapped);
     }
 
@@ -40,7 +41,7 @@ function showWords() {
 
         $(element).delay(delay).fadeIn(1000, function(){
             total_height = $("#js-romance").height();
-            console.log("current height count: "+height_count);
+            single_word_height = $(".word").height();
 
             if(height_count == 0) {
                 height_count = 1;
@@ -49,12 +50,12 @@ function showWords() {
                 previous_height = total_height;
                 height_count = height_count+1;
                 if(height_count == 4){
-                    top_margin = top_margin-70;
+                    top_margin = top_margin-single_word_height;
                     $("#js-romance").css("margin-top",top_margin+"px");
                     previous_height_count = height_count;
                 } else if(height_count > 4 && height_count > previous_height_count) {
                     previous_height_count = height_count;
-                    top_margin = top_margin-70;
+                    top_margin = top_margin-single_word_height;
                     $("#js-romance").css("margin-top",top_margin+"px");
                 }
             } else {

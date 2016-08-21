@@ -96,12 +96,13 @@ textarea {
    ========================================================================== */
 #wrapper {
     position: relative;
-    height: 280px;
+    height: 300px;
     width: 100%;
     line-height: 4.25em;
     overflow: hidden;
-    padding-top: 50px;
+    padding-top: 68px;
 }
+
 #wrapper:before {
     content: '';
     display: block;
@@ -110,7 +111,7 @@ textarea {
     left: -50px;
     right: -50px;
     bottom: -50px;
-    box-shadow: 0px 15px 15px 40px #fbdfeb inset;
+    box-shadow: 0px 70px 5px 2px #fbdfeb inset;
 }
 
 #js-romance {
