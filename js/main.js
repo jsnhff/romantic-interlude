@@ -33,7 +33,7 @@ function addBodyParts() {
 
     // unique_random_numbers is an array containing 3 unique numbers in the given range
     $(".image").each(function(index, value){
-        $(this).attr("src","/romantic-interlude/img/"+unique_random_numbers[index]".png");
+        $(this).attr("src","/romantic-interlude/img/"+unique_random_numbers[index]+".png");
     });
 }
 
