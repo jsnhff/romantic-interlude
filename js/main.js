@@ -2,6 +2,7 @@ var book;
 var home = $("#js-romance");
 var line_break = /\n/gi; // A global regex to replace linebreaks
 var double_break = /<br><br>/gi; // A global regex to replace linebreaks
+var triple_break = /<br><br><br>/gi; // A global regex to replace linebreaks
 var height_count = 0; // A global height measure to help animate lines 
 var top_margin = 0; // A global top margin variable to help track incremental top margin increase
 var total_height = 0;
@@ -9,18 +10,19 @@ var previous_height = 0;
 var previous_height_count = 0;
 var single_word_height = 0;
 var tota_word_count = 0;
-var unique_random_numbers = [];
+//var unique_random_numbers = [];
+var books = ['the_notebook','the_longest_ride'];
+
 var server_path = "/romantic-interlude/"
 //var server_path = ""
 
-// Add random body parts
-function addBodyParts() {
+function randomUniqueNums(limit, amount, lower_bound, upper_bound) {
     // Example, including customisable intervals [lower_bound, upper_bound)
     // Thanks: http://goo.gl/MXgFbn
-    var limit = 5,
-        amount = 3,
-        lower_bound = 1,
-        upper_bound = 5,
+    var limit = limit,
+        amount = amount,
+        lower_bound = lower_bound,
+        upper_bound = upper_bound,
         unique_random_numbers = [];
 
     if (amount > limit) limit = amount; // Infinite loop if you want more unique
@@ -33,18 +35,22 @@ function addBodyParts() {
         }
     }
 
-    // unique_random_numbers is an array containing 3 unique numbers in the given range
+    return unique_random_numbers;
+}
+
+// Add random body parts
+function addBodyParts(book_path) {
+    // Make some unique random nums
+    random_part_nums = randomUniqueNums(5,3,1,5);
+
     $(".image").each(function(index, value){
-        console.log(unique_random_numbers[index]);
-        $(this).find("img").attr("src",server_path+"/img/"+unique_random_numbers[index]+".png");
+        console.log(random_part_nums[index]);
+        $(this).find("img").attr("src",server_path+"/img/"+book_path+"/"+random_part_nums[index]+".png");
     });
 }
 
-addBodyParts();
-
 // Get book from text file
 function loadBook() {
-    console.log("load book");
     // Show the wrapper and reset vars to default states
     $("#wrapper").show();
     height_count = 0;
@@ -55,14 +61,18 @@ function loadBook() {
     total_word_count = 0;
 
     // Choose a random book
+    random_book_num = (Math.floor(Math.random() * books.length ));
     // Choose corresonponding image folder
+    random_image_folder = books[random_book_num];
     // Load random images
+    addBodyParts(random_image_folder);
 
     $.ajax({
-        url : server_path+"/books/the_notebook.txt",
+        url : server_path+"/books/"+books[random_book_num]+".txt",
         dataType: "text",
         success : function (data) {
             book = data.replace(line_break, "<br>"); // Replace linebreaks
+            book = book.replace(triple_break, "<br> "); // Replace linebreaks
             book = book.replace(double_break, "<br> "); // Replace linebreaks
             book = book.split(' '); // Split on space
             write(book);
