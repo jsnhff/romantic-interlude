@@ -129,22 +129,51 @@ textarea {
     font-size: 4em;
 }
 
-#image-1 {
+/* Animate the images
+ * Thanks Leaverou: http://goo.gl/KK2Yxj
+ * */
+@keyframes circle {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+
+@keyframes inner-circle {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(-360deg); }
+}
+
+.image-1 {
+    margin: 20px auto 0;
+    animation: circle 5s linear infinite;
+    transform-origin: 50% 30px;
+    position: absolute;
+    top: 4%;
+    left: 60%;
+}
+.image-1 img {
+    animation: inner-circle 5s linear infinite;
+}
+.image-2 {
+    margin: 20px auto 0;
+    animation: circle 5s linear infinite;
+    transform-origin: 50% 30px;
     position: absolute;
     top: 10%;
     left: 17%;
 }
-
-#image-2 {
-    position: absolute;
-    top: 80%;
-    right: 7%;
+.image-2 img {
+    animation: inner-circle 5s linear infinite;
 }
-
-#image-3 {
+.image-3 {
+    margin: 20px auto 0;
+    animation: circle 5s linear infinite;
+    transform-origin: 50% 30px;
     position: absolute;
-    top: 3%;
-    left: 37%;
+    top: 47%;
+    left: 89%;
+}
+.image-3 img {
+    animation: inner-circle 5s linear infinite;
 }
 
 .bg-pink {
