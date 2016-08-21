@@ -9,6 +9,35 @@ var previous_height = 0;
 var previous_height_count = 0;
 var single_word_height = 0;
 var tota_word_count = 0;
+var unique_random_numbers = [];
+
+// Add random body parts
+function addBodyParts() {
+    // Example, including customisable intervals [lower_bound, upper_bound)
+    // Thanks: http://goo.gl/MXgFbn
+    var limit = 10,
+        amount = 3,
+        lower_bound = 1,
+        upper_bound = 10,
+        unique_random_numbers = [];
+
+    if (amount > limit) limit = amount; // Infinite loop if you want more unique
+    // Natural numbers than existemt in a given range
+    while (unique_random_numbers.length < limit) {
+        var random_number = Math.round(Math.random()*(upper_bound - lower_bound) + lower_bound);
+        if (unique_random_numbers.indexOf(random_number) == -1) { 
+            // Yay! new random number
+            unique_random_numbers.push( random_number );
+        }
+    }
+
+    // unique_random_numbers is an array containing 3 unique numbers in the given range
+    $(".image").each(function(index, value){
+        $(this).attr("src","/romantic-interlude/img/"+unique_random_numbers[index]".png");
+    });
+}
+
+addBodyParts();
 
 // Get book from text file
 function loadBook() {
@@ -27,7 +56,7 @@ function loadBook() {
     // Load random images
 
     $.ajax({
-        url : "/books/the_notebook.txt",
+        url : "/romantic-interlude/books/the_notebook.txt",
         dataType: "text",
         success : function (data) {
             book = data.replace(line_break, "<br>"); // Replace linebreaks
