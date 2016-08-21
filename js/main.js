@@ -10,6 +10,8 @@ var previous_height_count = 0;
 var single_word_height = 0;
 var tota_word_count = 0;
 var unique_random_numbers = [];
+//var server_path = "/romantic-interlude/"
+var server_path = ""
 
 // Add random body parts
 function addBodyParts() {
@@ -33,7 +35,8 @@ function addBodyParts() {
 
     // unique_random_numbers is an array containing 3 unique numbers in the given range
     $(".image").each(function(index, value){
-        $(this).attr("src","/romantic-interlude/img/"+unique_random_numbers[index]+".png");
+        console.log(unique_random_numbers[index]);
+        $(this).find("img").attr("src",server_path+"/img/"+unique_random_numbers[index]+".png");
     });
 }
 
@@ -56,7 +59,7 @@ function loadBook() {
     // Load random images
 
     $.ajax({
-        url : "/romantic-interlude/books/the_notebook.txt",
+        url : server_path+"/books/the_notebook.txt",
         dataType: "text",
         success : function (data) {
             book = data.replace(line_break, "<br>"); // Replace linebreaks
