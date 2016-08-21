@@ -1,8 +1,0 @@
-function(){
-    var word = "Sullivan?";
-    var word_wrapped = "<span class='fade-out'>"+word+"</span>"; 
-    var last_word = $("#js-romance");
-
-    last_word.after(word);
-    $(".fade-out").removeClass("fade-out");
-}
