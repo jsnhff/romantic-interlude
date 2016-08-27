@@ -49,6 +49,19 @@ function addBodyParts(book_path) {
     });
 }
 
+// Add random body parts
+function changeBackground(book_path) {
+    // Make some unique random nums
+    random_color_nums = randomUniqueNums(5,3,1,5);
+
+    // color
+    var colors = ["#fbdfeb","#ffbbda","#f0addb","#ff84bc","#e38690"];
+
+    // change color
+    $("body").animate({backgroundColor: colors[random_color_nums[0]]}, 3000, function(){console.log("done");});
+    $(".mask").animate({backgroundColor: colors[random_color_nums[0]]}, 3000, function(){console.log("done");});
+}
+
 // Get book from text file
 function loadBook() {
     // Show the wrapper and reset vars to default states
@@ -66,6 +79,7 @@ function loadBook() {
     random_image_folder = books[random_book_num];
     // Load random images
     addBodyParts(random_image_folder);
+    changeBackground();
 
     $.ajax({
         url : server_path+"/books/"+books[random_book_num]+".txt",
