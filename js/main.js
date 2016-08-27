@@ -11,7 +11,7 @@ var previous_height_count = 0;
 var single_word_height = 0;
 var tota_word_count = 0;
 //var unique_random_numbers = [];
-var books = ['the_notebook','the_longest_ride'];
+var books = ['the_notebook','the_longest_ride','the_best_of_me','the_choice','the_guardian','the_last_song','the_lucky_one','the_rescue','the_wedding'];
 
 var server_path = "/romantic-interlude/"
 //var server_path = ""
